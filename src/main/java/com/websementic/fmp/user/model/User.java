@@ -58,7 +58,7 @@ public class User implements UserDetails {
     }
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Borrowing> borrowings;
+    private List<Borrowing> borrowings = new ArrayList<>();
 
     public User(String email, String password, String firstName, String lastName, LocalDate birthDate, Role role) {
         this.email = email;
