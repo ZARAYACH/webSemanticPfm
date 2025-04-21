@@ -2,8 +2,6 @@ package com.websementic.fmp.security.jwt;
 
 
 import jakarta.xml.bind.DatatypeConverter;
-import org.bouncycastle.openssl.PEMWriter;
-import org.bouncycastle.openssl.PKCS8Generator;
 import org.bouncycastle.util.io.pem.PemObject;
 
 import java.io.*;
@@ -89,11 +87,15 @@ public class RSAKeysUtils {
     }
 
     public static void writeRSAPrivateKeyAsPem(String fileName, RSAPrivateKey privateKey) throws IOException {
-        PKCS8Generator encryptorBuilder = new PKCS8Generator(privateKey);
-        PEMWriter writer = new PEMWriter(new FileWriter(fileName));
-        PemObject obj = encryptorBuilder.generate();
-        writer.writeObject(obj);
-        writer.close();
+        PemObject pemObject = new PemObject("PRIVATE KEY", privateKey.getEncoded());
+        try (FileWriter fileWriter = new FileWriter(fileName);
+             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+             PrintWriter printWriter = new PrintWriter(bufferedWriter)) {
+
+            printWriter.println("-----BEGIN PRIVATE KEY-----");
+            printWriter.println(DatatypeConverter.printBase64Binary(pemObject.getContent()).replaceAll("(.{64})", "$1\n"));
+            printWriter.println("-----END PRIVATE KEY-----");
+        }
     }
 
     public static void writeRSAPublicKeyToPem(String fileName, RSAPublicKey publicKey) throws IOException {

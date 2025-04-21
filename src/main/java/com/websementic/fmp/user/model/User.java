@@ -25,8 +25,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "role", discriminatorType = DiscriminatorType.STRING)
 public class User implements UserDetails {
 
     @Id
@@ -35,8 +33,10 @@ public class User implements UserDetails {
 
     @Column(unique = true)
     private String email;
+
     @Enumerated(EnumType.STRING)
     private Role role = Role.USER;
+
     private String password;
     private String firstName;
     private String lastName;
