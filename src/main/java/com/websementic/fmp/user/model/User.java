@@ -1,5 +1,6 @@
 package com.websementic.fmp.user.model;
 
+import com.websementic.fmp.borrow.modal.Borrowing;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -51,6 +52,14 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Session> sessions = new ArrayList<>();
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + this.getRole()));
+    }
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Borrowing> borrowings;
+
     public User(String email, String password, String firstName, String lastName, LocalDate birthDate, Role role) {
         this.email = email;
         this.password = password;
@@ -60,10 +69,6 @@ public class User implements UserDetails {
         this.role = role;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + this.getRole()));
-    }
 
     @Override
     public String getUsername() {

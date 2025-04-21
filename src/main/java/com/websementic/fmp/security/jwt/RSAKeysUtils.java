@@ -1,6 +1,5 @@
 package com.websementic.fmp.security.jwt;
 
-
 import jakarta.xml.bind.DatatypeConverter;
 import org.bouncycastle.util.io.pem.PemObject;
 
@@ -92,9 +91,11 @@ public class RSAKeysUtils {
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
              PrintWriter printWriter = new PrintWriter(bufferedWriter)) {
 
-            printWriter.println("-----BEGIN PRIVATE KEY-----");
-            printWriter.println(DatatypeConverter.printBase64Binary(pemObject.getContent()).replaceAll("(.{64})", "$1\n"));
-            printWriter.println("-----END PRIVATE KEY-----");
+            printWriter.println(BEGIN_PRIVATE_KEY);
+            printWriter.println(DatatypeConverter
+                    .printBase64Binary(pemObject.getContent())
+                    .replaceAll("(.{64})", "$1\n"));
+            printWriter.println(END_PRIVATE_KEY);
         }
     }
 
@@ -104,9 +105,11 @@ public class RSAKeysUtils {
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
              PrintWriter printWriter = new PrintWriter(bufferedWriter)) {
 
-            printWriter.println("-----BEGIN PUBLIC KEY-----");
-            printWriter.println(DatatypeConverter.printBase64Binary(pemObject.getContent()).replaceAll("(.{64})", "$1\n"));
-            printWriter.println("-----END PUBLIC KEY-----");
+            printWriter.println(BEGIN_PUBLIC_KEY);
+            printWriter.println(DatatypeConverter
+                    .printBase64Binary(pemObject.getContent())
+                    .replaceAll("(.{64})", "$1\n"));
+            printWriter.println(END_PUBLIC_KEY);
         }
     }
 }
