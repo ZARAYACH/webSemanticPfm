@@ -1,5 +1,6 @@
 package com.websementic.fmp.book.controller;
 
+import com.websementic.fmp.CustomPage;
 import com.websementic.fmp.book.BookMapper;
 import com.websementic.fmp.book.modal.Book;
 import com.websementic.fmp.book.modal.dto.BookDto;
@@ -7,11 +8,13 @@ import com.websementic.fmp.book.service.BookService;
 import com.websementic.fmp.exeption.BadArgumentException;
 import com.websementic.fmp.exeption.NotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/v1/books")
@@ -22,8 +25,15 @@ public class BookController {
     private final BookService bookService;
 
     @GetMapping
-    private List<BookDto> listBooks() {
-        return bookMapper.toBookDto(bookService.list());
+    private CustomPage<BookDto> listBooks(@RequestParam(required = false) Set<Long> ids,
+                                          @RequestParam(required = false) String search,
+                                          @RequestParam(required = false) Integer pageNumber,
+                                          @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
+        Pageable pageable = Pageable.ofSize(pageSize);
+
+        if (pageNumber != null) pageable = PageRequest.of(pageNumber, pageSize);
+
+        return bookMapper.toBookDto(bookService.list(ids, search, pageable));
     }
 
     @GetMapping("/{id}")

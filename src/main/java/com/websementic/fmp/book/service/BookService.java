@@ -3,15 +3,19 @@ package com.websementic.fmp.book.service;
 import com.websementic.fmp.book.modal.Book;
 import com.websementic.fmp.book.modal.dto.BookDto;
 import com.websementic.fmp.book.repository.BookRepository;
+import com.websementic.fmp.book.repository.BookSpecification;
 import com.websementic.fmp.exeption.BadArgumentException;
 import com.websementic.fmp.exeption.NotFoundException;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -19,8 +23,9 @@ public class BookService {
 
     private final BookRepository bookRepository;
 
-    public List<Book> list() {
-        return bookRepository.findAll();
+    public Page<Book> list(Set<Long> ids, String searchTerm, Pageable pageable) {
+        BookSpecification bookSpecification = new BookSpecification(ids, searchTerm);
+        return bookRepository.findAll(bookSpecification, pageable);
     }
 
     public Book findById(long id) throws NotFoundException {

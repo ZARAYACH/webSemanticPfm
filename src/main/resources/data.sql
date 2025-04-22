@@ -1,0 +1,25 @@
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (1, null,'ADMIN',  'admin@email.com', 'admin', 'admin', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (2, null,  'TEACHER','teacher@email.com',  'teacher','teacher', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (3, null,  'TEACHER','teacher2@email.com', 'teacher2','teacher2',  '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (4, null,  'STUDENT','student@gg.com', 'student', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (5, null, 'STUDENT','student2@gg.com', 'student2', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (6, null,  'STUDENT','student3@gg.com', 'student3', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (7, null, 'STUDENT','student4@gg.com', 'student4', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (8, null, 'STUDENT', 'student5@gg.com', 'student5', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (9, null, 'STUDENT', 'student6@gg.com', 'student6', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (10, null,'STUDENT',  'student7@gg.com', 'student7', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (11, null,'STUDENT',  'student8@gg.com', 'student8', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (12, null,  'STUDENT','student9@gg.com', 'student9', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (13, null, 'STUDENT', 'student10@gg.com', 'student10', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (14, null, 'STUDENT', 'student11@gg.com', 'student11', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (15, null, 'STUDENT', 'student12@gg.com', 'student12', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (16, null, 'STUDENT', 'student13@gg.com', 'student13', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (17, null, 'STUDENT', 'student14@gg.com', 'student14', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (18, null,'STUDENT',  'student15@gg.com', 'student15', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (19, null,'STUDENT', 'student16@gg.com', 'student16', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (20, null,'STUDENT',  'student17@gg.com', 'student17', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (21, null, 'STUDENT','student18@gg.com', 'student18', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+INSERT IGNORE  INTO user (id, birth_date,role,  email, first_name, last_name, password) VALUES (22, null,  'STUDENT','student19@gg.com', 'student19', 'student', '{bcrypt}$2a$10$/ssBcrQaSKa24llAdb.yLeB0/3qHqi9hDilgveYVNr8zfqp4S.fyK');
+
+
+

@@ -2,6 +2,7 @@ package com.websementic.fmp.borrow.service;
 
 import com.websementic.fmp.book.modal.Book;
 import com.websementic.fmp.book.repository.BookRepository;
+import com.websementic.fmp.book.repository.BookSpecification;
 import com.websementic.fmp.borrow.modal.Borrowing;
 import com.websementic.fmp.borrow.modal.dto.BorrowingDto;
 import com.websementic.fmp.borrow.repository.BorrowingRepository;
@@ -10,11 +11,13 @@ import com.websementic.fmp.exeption.NotFoundException;
 import com.websementic.fmp.user.model.User;
 import com.websementic.fmp.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
