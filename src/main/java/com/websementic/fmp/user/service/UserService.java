@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.passay.PasswordData;
 import org.passay.PasswordValidator;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -76,7 +77,7 @@ public class UserService {
     private void validatePassword(String password) {
         Assert.isTrue(passwordValidator.validate(new PasswordData(password)).isValid(), "Password should be at least be 8 character with one uppercase, one special and one digit characters");
     }
-
+    @PreAuthorize("hasRole('ADMIN') or #user.id == authentication.principal.id ")
     public User modify(User user, UserDto.PostUserDto postUserDto) throws BadArgumentException {
         user.setBirthDate(postUserDto.birthDate());
         user.setFirstName(postUserDto.firstName());
