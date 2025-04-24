@@ -1,17 +1,22 @@
 package com.websementic.fmp.borrow.modal.dto;
 
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDate;
 
 public record BorrowingDto(
-        Long id,
-        Long userId,
-        Long bookId,
-        LocalDate borrowDate,
-        LocalDate dueDate,
+        @NotNull Long id,
+        @NotNull Long userId,
+        @NotNull Long bookId,
+        String bookISBN,
+        String bookTitle,
+        String bookAuthor,
+        @NotNull LocalDate borrowDate,
+        @NotNull LocalDate dueDate,
         LocalDate returnDate,
-        Boolean isReturned
+        boolean returned
 ) {
-    public record PostDto(
+    public record BorrowingPostDto(
             long userId,
             long bookId,
             LocalDate borrowDate,

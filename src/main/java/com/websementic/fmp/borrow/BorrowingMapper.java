@@ -18,6 +18,9 @@ public interface BorrowingMapper {
 
     @Mapping(source = "user.id", target = "userId")
     @Mapping(source = "book.id", target = "bookId")
+    @Mapping(source = "book.isbn", target = "bookISBN")
+    @Mapping(source = "book.title", target = "bookTitle")
+    @Mapping(source = "book.author", target = "bookAuthor")
     BorrowingDto toBorrowingDto(Borrowing borrowing);
 
     List<BorrowingDto> toBorrowingDto(List<Borrowing> borrowings);

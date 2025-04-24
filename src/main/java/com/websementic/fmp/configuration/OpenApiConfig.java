@@ -1,10 +1,7 @@
 package com.websementic.fmp.configuration;
 
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.Operation;
-import io.swagger.v3.oas.models.PathItem;
-import io.swagger.v3.oas.models.Paths;
+import io.swagger.v3.oas.models.*;
 import io.swagger.v3.oas.models.media.Content;
 import io.swagger.v3.oas.models.media.MediaType;
 import io.swagger.v3.oas.models.media.Schema;
@@ -29,7 +26,8 @@ public class OpenApiConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
-        return new OpenAPI().paths(new Paths()
+        OpenAPI openAPI = new OpenAPI()
+                .paths(new Paths()
                 .addPathItem("/login", new PathItem()
                         .post(new Operation()
                                 .summary("User Login")
@@ -57,5 +55,7 @@ public class OpenApiConfig {
                                 .responses(new ApiResponses()
                                         .addApiResponse("200", new ApiResponse()
                                                 .description("Successfully logged out"))))));
+        openAPI.setSpecVersion(SpecVersion.V31);
+        return openAPI;
     }
 }

@@ -1,20 +1,25 @@
 package com.websementic.fmp.book.modal.dto;
 
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 public record BookDto(
-        Long id,
-        String title,
-        String author,
-        String isbn,
+        @NotNull Long id,
+        @NotNull String title,
+        @NotNull String author,
+        @NotNull String isbn,
         int totalCopies,
         int availableCopies,
-        List<Long> borrowingIds
+        List<Long> borrowingIds,
+        @NotNull LocalDateTime createdAt,
+        @NotNull LocalDateTime updatedAt
 ) {
-    public record PostDto(
-            String title,
-            String author,
-            String isbn,
+    public record BookPostDto(
+            @NotNull String title,
+            @NotNull String author,
+            @NotNull String isbn,
             int totalCopies
     ) {
     }

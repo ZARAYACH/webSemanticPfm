@@ -42,7 +42,19 @@ public class ApplicationSecurity {
         return http.cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorize) -> authorize
-
+                        .requestMatchers(HttpMethod.GET,
+                                "/api/v1/users/me",
+                                "/api/v1/books/**",
+                                "/api/v1/borrowings/me")
+                        .hasAnyRole(User.Role.USER.toString(),
+                                User.Role.ADMIN.toString())
+                        .requestMatchers(HttpMethod.POST, "/api/v1/borrowings/borrow",
+                                "/api/v1/borrowings/*/return")
+                        .hasAnyRole(User.Role.USER.toString(),
+                                User.Role.ADMIN.toString())
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/users/*")
+                        .hasAnyRole(User.Role.ADMIN.toString(),
+                                User.Role.USER.toString())
                         .requestMatchers(HttpMethod.POST, "/login", "/logout").permitAll()
                         .requestMatchers(HttpMethod.POST, "/signup", "/api/v1/tokens").permitAll()
                         .requestMatchers(HttpMethod.GET, "/.well-known/jwks.json").permitAll()
@@ -50,7 +62,8 @@ public class ApplicationSecurity {
                                 "/swagger-ui.html",
                                 "/swagger-ui/*").permitAll()
                         .requestMatchers("/actuator/**").permitAll()
-                        .anyRequest().hasRole(User.Role.ADMIN.toString()))
+                        .anyRequest()
+                        .hasRole(User.Role.ADMIN.toString()))
 
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling(exceptionableConfigure ->

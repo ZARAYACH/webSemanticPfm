@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
 @Service
@@ -33,12 +32,12 @@ public class BookService {
                 .orElseThrow(() -> new NotFoundException("Book #" + id + "Not found."));
     }
 
-    public Book create(BookDto.PostDto bookDto) throws BadArgumentException {
+    public Book create(BookDto.BookPostDto bookDto) throws BadArgumentException {
         Book book = validatePostBookDtoAndCreate(bookDto);
         return bookRepository.save(book);
     }
 
-    public Book update(Book book, BookDto.PostDto bookDto) throws BadArgumentException {
+    public Book update(Book book, BookDto.BookPostDto bookDto) throws BadArgumentException {
         Book newBook = validatePostBookDtoAndCreate(bookDto);
 
         book.setIsbn(newBook.getIsbn());
@@ -52,7 +51,8 @@ public class BookService {
         bookRepository.delete(book);
     }
 
-    private Book validatePostBookDtoAndCreate(BookDto.PostDto bookDto) throws BadArgumentException {
+
+    private Book validatePostBookDtoAndCreate(BookDto.BookPostDto bookDto) throws BadArgumentException {
         try {
             Assert.hasText(bookDto.title(), "Title is required");
             Assert.hasText(bookDto.author(), "Author is required");

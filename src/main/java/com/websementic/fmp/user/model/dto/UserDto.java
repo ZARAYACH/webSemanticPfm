@@ -7,15 +7,12 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public record UserDto(
-        @NotNull
-        Long id,
-        @NotNull
-        String email,
+        @NotNull Long id,
+        @NotNull String email,
         String firstName,
         String lastName,
         LocalDate birthDate,
-        User.Role role,
-        String groupName
+        User.Role role
 ) {
     public record PostUserDto(
             Long id,

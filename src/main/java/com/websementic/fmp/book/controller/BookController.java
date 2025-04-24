@@ -10,6 +10,7 @@ import com.websementic.fmp.exeption.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -28,10 +29,10 @@ public class BookController {
     private CustomPage<BookDto> listBooks(@RequestParam(required = false) Set<Long> ids,
                                           @RequestParam(required = false) String search,
                                           @RequestParam(required = false) Integer pageNumber,
-                                          @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
-        Pageable pageable = Pageable.ofSize(pageSize);
+                                          @RequestParam(required = false) Integer pageSize) {
+        Pageable pageable = Pageable.unpaged();
 
-        if (pageNumber != null) pageable = PageRequest.of(pageNumber, pageSize);
+        if (pageSize != null && pageNumber != null) pageable = PageRequest.of(pageNumber, pageSize);
 
         return bookMapper.toBookDto(bookService.list(ids, search, pageable));
     }
@@ -42,12 +43,12 @@ public class BookController {
     }
 
     @PostMapping
-    private BookDto createBook(@RequestBody BookDto.PostDto bookDto) throws BadArgumentException {
+    private BookDto createBook(@RequestBody BookDto.BookPostDto bookDto) throws BadArgumentException {
         return bookMapper.toBookDto(bookService.create(bookDto));
     }
 
     @PutMapping("/{id}")
-    private BookDto updateBook(@PathVariable long id, @RequestBody BookDto.PostDto bookDto) throws NotFoundException, BadArgumentException {
+    private BookDto updateBook(@PathVariable long id, @RequestBody BookDto.BookPostDto bookDto) throws NotFoundException, BadArgumentException {
         Book book = bookService.findById(id);
         return bookMapper.toBookDto(bookService.update(book, bookDto));
     }
@@ -58,4 +59,5 @@ public class BookController {
         bookService.delete(book);
         return Collections.singletonMap("deleted", true);
     }
+
 }
