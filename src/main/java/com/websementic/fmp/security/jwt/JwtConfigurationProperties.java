@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "app.security.jwt")
 @Configuration
 public class JwtConfigurationProperties {
-    private String KeyPairsPath = "/home/timeManagement/keys" ;
+    private String KeyPairsPath = "/home/webSemanticProject/keys" ;
     private Long accessTokenValidityInSeconds = 900L;
     private Long refreshTokenValidityInSeconds = 2628000L;
 
